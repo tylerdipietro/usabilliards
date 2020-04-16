@@ -4,6 +4,7 @@
   "description": "A way to introduce youth players to the game of billiards.",
   "main": "server.js",
   "scripts": {
+    "client-install": "npm install --prefix client",
     "start": "node server",
     "server": "nodemon server",
     "client": "npm start --prefix client",
