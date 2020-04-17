@@ -204,7 +204,15 @@ router.put(
       description,
     };
     try {
-      const profile = await Profile.findOne({ user: req.user.id });
+      let profile = await Profile.findOne({ user: req.user.id });
+
+      let expId = req.params.exp_id;
+
+      if (expId) {
+        console.log(expId);
+      } else {
+        console.log('no id');
+      }
 
       profile.experience.unshift(newExp);
 
@@ -236,6 +244,7 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
     await profile.save();
 
     res.json(profile);
+    console.log(req.params);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
